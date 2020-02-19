@@ -9,25 +9,27 @@
 /* Begin PBXBuildFile section */
 		278C6CF723FD7D0B00C92A21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C6CF623FD7D0B00C92A21 /* AppDelegate.swift */; };
 		278C6CF923FD7D0B00C92A21 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 278C6CF823FD7D0B00C92A21 /* GameScene.sks */; };
-		278C6CFB23FD7D0B00C92A21 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 278C6CFA23FD7D0B00C92A21 /* Actions.sks */; };
 		278C6CFD23FD7D0B00C92A21 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C6CFC23FD7D0B00C92A21 /* GameScene.swift */; };
 		278C6CFF23FD7D0B00C92A21 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C6CFE23FD7D0B00C92A21 /* GameViewController.swift */; };
 		278C6D0223FD7D0B00C92A21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D0023FD7D0B00C92A21 /* Main.storyboard */; };
 		278C6D0423FD7D0C00C92A21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D0323FD7D0C00C92A21 /* Assets.xcassets */; };
 		278C6D0723FD7D0C00C92A21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D0523FD7D0C00C92A21 /* LaunchScreen.storyboard */; };
+		278C6D0F23FD811200C92A21 /* Jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D0E23FD811200C92A21 /* Jump.atlas */; };
+		278C6D1123FD86FF00C92A21 /* Run.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D1023FD86FF00C92A21 /* Run.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		278C6CF323FD7D0B00C92A21 /* Runny-Horse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Runny-Horse.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		278C6CF623FD7D0B00C92A21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		278C6CF823FD7D0B00C92A21 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		278C6CFA23FD7D0B00C92A21 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		278C6CFC23FD7D0B00C92A21 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		278C6CFE23FD7D0B00C92A21 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		278C6D0123FD7D0B00C92A21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		278C6D0323FD7D0C00C92A21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		278C6D0623FD7D0C00C92A21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		278C6D0823FD7D0C00C92A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		278C6D0E23FD811200C92A21 /* Jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Jump.atlas; sourceTree = SOURCE_ROOT; };
+		278C6D1023FD86FF00C92A21 /* Run.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Run.atlas; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +62,10 @@
 		278C6CF523FD7D0B00C92A21 /* Runny-Horse */ = {
 			isa = PBXGroup;
 			children = (
+				278C6D1023FD86FF00C92A21 /* Run.atlas */,
+				278C6D0E23FD811200C92A21 /* Jump.atlas */,
 				278C6CF623FD7D0B00C92A21 /* AppDelegate.swift */,
 				278C6CF823FD7D0B00C92A21 /* GameScene.sks */,
-				278C6CFA23FD7D0B00C92A21 /* Actions.sks */,
 				278C6CFC23FD7D0B00C92A21 /* GameScene.swift */,
 				278C6CFE23FD7D0B00C92A21 /* GameViewController.swift */,
 				278C6D0023FD7D0B00C92A21 /* Main.storyboard */,
@@ -132,10 +135,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				278C6D0223FD7D0B00C92A21 /* Main.storyboard in Resources */,
+				278C6D1123FD86FF00C92A21 /* Run.atlas in Resources */,
 				278C6CF923FD7D0B00C92A21 /* GameScene.sks in Resources */,
 				278C6D0423FD7D0C00C92A21 /* Assets.xcassets in Resources */,
+				278C6D0F23FD811200C92A21 /* Jump.atlas in Resources */,
 				278C6D0723FD7D0C00C92A21 /* LaunchScreen.storyboard in Resources */,
-				278C6CFB23FD7D0B00C92A21 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +306,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mteixeira88.Runny-Horse";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,7 +324,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mteixeira88.Runny-Horse";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
