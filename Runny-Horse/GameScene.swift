@@ -28,6 +28,12 @@ class GameScene: SKScene {
         background.zPosition = -1
         addChild(background)
         
+        if let particles = SKEmitterNode(fileNamed: "Starfield") {
+            particles.position = CGPoint(x: 1080, y: 0)
+            particles.advanceSimulationTime(60)
+            particles.zPosition = -1
+            addChild(particles)
+        }
         
         physicsWorld.gravity = CGVector(dx:0, dy:-2)
         runAtlas = SKTextureAtlas(named: "Run")
