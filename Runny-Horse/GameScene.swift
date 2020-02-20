@@ -31,17 +31,23 @@ class GameScene: SKScene {
         if let particles = SKEmitterNode(fileNamed: "Starfield") {
             particles.position = CGPoint(x: 1080, y: 0)
             particles.advanceSimulationTime(60)
-            particles.zPosition = -1
+            particles.zPosition = -2
             addChild(particles)
         }
+        
+        let back = SKSpriteNode(imageNamed: "back")
+        back.size = CGSize(width: frame.width, height: frame.height)
+        back.zPosition = -3
+        addChild(back)
         
         physicsWorld.gravity = CGVector(dx:0, dy:-2)
         runAtlas = SKTextureAtlas(named: "Run")
         jumpAtlas = SKTextureAtlas(named: "Jump")
         
         runHorse = SKSpriteNode(imageNamed: runAtlas.textureNames[0])
-        runHorse.size = CGSize(width: 125, height: 125)
+        runHorse.size = CGSize(width: 135, height: 135)
         runHorse.position.x = frame.minX + 100
+        runHorse.position.y = frame.minY + 80
         runHorse.physicsBody = SKPhysicsBody(texture: runHorse.texture!, size: runHorse.texture!.size())
         
         addChild(runHorse)
