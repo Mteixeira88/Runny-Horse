@@ -9,77 +9,23 @@
 import SpriteKit
 import GameplayKit
 
+enum CollisionType: UInt32 {
+    case horse = 1
+    case enemy = 2
+}
+
 class GameScene: SKScene {
-    
-    var jumpHorse = SKSpriteNode()
     var runHorse = SKSpriteNode()
-    
-    var jumpAtlas = SKTextureAtlas()
+    var enemy = SKSpriteNode()
     var jumpTextureArray = [SKTexture]()
-    
-    var runAtlas = SKTextureAtlas()
-    var runTextureArray = [SKTexture]()
+
     
     override func didMove(to view: SKView) {
         createBackground()
-        
+        createHorse()
+        createEnemy()
         physicsWorld.gravity = CGVector(dx:0, dy:-2)
-        runAtlas = SKTextureAtlas(named: "Run")
-        jumpAtlas = SKTextureAtlas(named: "Jump")
         
-        runHorse = SKSpriteNode(imageNamed: runAtlas.textureNames[0])
-        runHorse.size = CGSize(width: 135, height: 135)
-        runHorse.position.x = frame.minX + 100
-        runHorse.position.y = frame.minY + 80
-        runHorse.physicsBody = SKPhysicsBody(texture: runHorse.texture!, size: runHorse.texture!.size())
-        
-        addChild(runHorse)
-        
-        for i in 1...jumpAtlas.textureNames.count {
-            let name = "jump_\(i).png"
-            jumpTextureArray.append(SKTexture(imageNamed: name))
-        }
-        
-        for i in 1...runAtlas.textureNames.count {
-            let name = "run_\(i).png"
-            runTextureArray.append(SKTexture(imageNamed: name))
-        }
-        runHorse.run(SKAction.repeatForever(SKAction.animate(with: runTextureArray, timePerFrame: 0.1)))
-    }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-        
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        runHorse.run(SKAction.repeat(SKAction.animate(with: jumpTextureArray, timePerFrame: 0.1), count: 1))
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        moveGround()
     }
     
     func createBackground() {
@@ -98,6 +44,40 @@ class GameScene: SKScene {
         }
     }
     
+    func createHorse() {
+        var runAtlas = SKTextureAtlas()
+        var runTextureArray = [SKTexture]()
+        
+        var jumpAtlas = SKTextureAtlas()
+        
+        runAtlas = SKTextureAtlas(named: "Run")
+        jumpAtlas = SKTextureAtlas(named: "Jump")
+        
+        for i in 1...jumpAtlas.textureNames.count {
+            let name = "jump_\(i).png"
+            jumpTextureArray.append(SKTexture(imageNamed: name))
+        }
+        
+        for i in 1...runAtlas.textureNames.count {
+            let name = "run_\(i).png"
+            runTextureArray.append(SKTexture(imageNamed: name))
+        }
+        
+        runHorse = SKSpriteNode(imageNamed: runAtlas.textureNames[0])
+        runHorse.size = CGSize(width: 135, height: 135)
+        runHorse.position.x = frame.minX + 120
+        runHorse.position.y = frame.minY + 80
+        runHorse.physicsBody = SKPhysicsBody(texture: runHorse.texture!, size: runHorse.texture!.size())
+        runHorse.physicsBody?.categoryBitMask = CollisionType.horse.rawValue
+        runHorse.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue
+        runHorse.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue
+//        runHorse.physicsBody?.isDynamic = false
+        
+        addChild(runHorse)
+        
+        runHorse.run(SKAction.repeatForever(SKAction.animate(with: runTextureArray, timePerFrame: 0.1)))
+    }
+    
     func moveGround() {
         enumerateChildNodes(withName: "Background") { (node, error) in
             node.position.x -= 1.75
@@ -106,5 +86,43 @@ class GameScene: SKScene {
                 node.position.x += (self.scene?.size.width)! * 3
             }
         }
+    }
+    
+    func createEnemy() {
+        let texture = SKTexture(imageNamed: "box")
+        enemy = SKSpriteNode(imageNamed: "box")
+        enemy.physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
+        enemy.physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
+        enemy.physicsBody?.collisionBitMask = CollisionType.horse.rawValue
+        enemy.physicsBody?.contactTestBitMask = CollisionType.horse.rawValue
+        enemy.physicsBody?.isDynamic = false
+        enemy.name = "enemy"
+        enemy.size = CGSize(width: 40, height: 40)
+        enemy.position = CGPoint(x: frame.maxX + 200, y: frame.minY + 50)
+        print("entrei")
+        
+        addChild(enemy)
+        
+        configureMovement()
+    }
+    
+    func configureMovement() {
+        let path = UIBezierPath()
+        path.move(to: .zero)
+            path.addLine(to: CGPoint(x: -10000, y: 0))
+        
+        let movement = SKAction.follow(path.cgPath, asOffset: true, orientToPath: true, speed: 300)
+        
+        let sequence = SKAction.sequence([movement, .removeFromParent()])
+        enemy.run(sequence)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        runHorse.run(SKAction.repeat(SKAction.animate(with: jumpTextureArray, timePerFrame: 0.1), count: 1))
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        // Called before each frame is rendered
+        moveGround()
     }
 }

@@ -306,7 +306,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mteixeira88.Runny-Horse";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -324,7 +324,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mteixeira88.Runny-Horse";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
