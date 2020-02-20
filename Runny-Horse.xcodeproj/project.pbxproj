@@ -16,7 +16,6 @@
 		278C6D0723FD7D0C00C92A21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D0523FD7D0C00C92A21 /* LaunchScreen.storyboard */; };
 		278C6D0F23FD811200C92A21 /* Jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D0E23FD811200C92A21 /* Jump.atlas */; };
 		278C6D1123FD86FF00C92A21 /* Run.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D1023FD86FF00C92A21 /* Run.atlas */; };
-		278C6D1523FECD0C00C92A21 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D1423FECD0C00C92A21 /* Starfield.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		278C6D0823FD7D0C00C92A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		278C6D0E23FD811200C92A21 /* Jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Jump.atlas; sourceTree = SOURCE_ROOT; };
 		278C6D1023FD86FF00C92A21 /* Run.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Run.atlas; sourceTree = SOURCE_ROOT; };
-		278C6D1423FECD0C00C92A21 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +67,6 @@
 				278C6CF623FD7D0B00C92A21 /* AppDelegate.swift */,
 				278C6CF823FD7D0B00C92A21 /* GameScene.sks */,
 				278C6CFC23FD7D0B00C92A21 /* GameScene.swift */,
-				278C6D1423FECD0C00C92A21 /* Starfield.sks */,
 				278C6CFE23FD7D0B00C92A21 /* GameViewController.swift */,
 				278C6D0023FD7D0B00C92A21 /* Main.storyboard */,
 				278C6D0323FD7D0C00C92A21 /* Assets.xcassets */,
@@ -137,7 +134,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				278C6D1523FECD0C00C92A21 /* Starfield.sks in Resources */,
 				278C6D0223FD7D0B00C92A21 /* Main.storyboard in Resources */,
 				278C6D1123FD86FF00C92A21 /* Run.atlas in Resources */,
 				278C6CF923FD7D0B00C92A21 /* GameScene.sks in Resources */,
