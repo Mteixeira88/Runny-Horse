@@ -23,13 +23,19 @@ class GameScene: SKScene {
     var horseIsRunning = false
     
     override func didMove(to view: SKView) {
+        let background = SKSpriteNode(imageNamed: "background")
+        background.size = CGSize(width: frame.width, height: frame.height)
+        background.zPosition = -1
+        addChild(background)
+        
+        
         physicsWorld.gravity = CGVector(dx:0, dy:-2)
         runAtlas = SKTextureAtlas(named: "Run")
         jumpAtlas = SKTextureAtlas(named: "Jump")
         
         runHorse = SKSpriteNode(imageNamed: runAtlas.textureNames[0])
-        runHorse.size = CGSize(width: 100, height: 100)
-        runHorse.position.x = frame.minX + 75
+        runHorse.size = CGSize(width: 125, height: 125)
+        runHorse.position.x = frame.minX + 100
         runHorse.physicsBody = SKPhysicsBody(texture: runHorse.texture!, size: runHorse.texture!.size())
         
         addChild(runHorse)
