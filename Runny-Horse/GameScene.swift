@@ -18,16 +18,37 @@ enum CollisionType: UInt32 {
 class GameScene: SKScene {
     var runHorse = SKSpriteNode(imageNamed: "textureHorse")
     var enemy = SKSpriteNode()
+    var enemyArray = [SKSpriteNode]()
     var jumpTextureArray = [SKTexture]()
-
+    let scoreLabel = RHScoreLabel(textAlignment: .right, fontSize: 30)
+    var score = 0
+    var gameOver = false
+    
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx:0, dy: -3)
-        let collisionFrame = CGRect(x: -1000, y: frame.minY + 20, width: size.width + 200, height: size.height - 20)
+        let collisionFrame = CGRect(x: -1000, y: frame.minY + 30, width: size.width + 1000, height: size.height - 20)
         physicsBody = SKPhysicsBody(edgeLoopFrom: collisionFrame)
         physicsBody?.categoryBitMask = CollisionType.ground.rawValue
         createBackground()
         createHorse()
         createEnemy()
+        configureUI()
+    }
+    
+    func configureUI() {
+        guard let view = view else {
+            return
+        }
+        scoreLabel.text = "\(score)"
+        view.addSubview(scoreLabel)
+        
+        NSLayoutConstraint.activate([
+            scoreLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            scoreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            scoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            scoreLabel.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
     
     func createBackground() {
@@ -62,7 +83,7 @@ class GameScene: SKScene {
         
         runHorse.size = CGSize(width: 100, height: 100)
         runHorse.position.x = frame.minX + 120
-        runHorse.physicsBody = SKPhysicsBody(circleOfRadius: 20)
+        runHorse.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 60, height: 60))
         runHorse.physicsBody?.categoryBitMask = CollisionType.horse.rawValue
         runHorse.physicsBody?.collisionBitMask = CollisionType.ground.rawValue | CollisionType.enemy.rawValue
         runHorse.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue
@@ -71,8 +92,19 @@ class GameScene: SKScene {
         
         addChild(runHorse)
         
-        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy), SKAction.wait(forDuration: 3.0)])))
+        let interval = random(min: 1.5, max: 3)
+        print(interval)
+        
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy), SKAction.wait(forDuration: TimeInterval(interval))])))
         runHorse.run(SKAction.repeatForever(SKAction.animate(with: runTextureArray, timePerFrame: 0.1)))
+    }
+    
+    func random() -> CGFloat {
+        return CGFloat(arc4random() / 0xFFFFFFFF)
+    }
+    
+    func random(min: CGFloat, max: CGFloat) -> CGFloat {
+        return random() * (max - min) + min
     }
     
     func moveGround() {
@@ -86,16 +118,23 @@ class GameScene: SKScene {
     }
     
     func createEnemy() {
+        guard !gameOver else {
+            return
+        }
+        
         enemy = SKSpriteNode(imageNamed: "box")
         enemy.physicsBody = SKPhysicsBody(circleOfRadius: 12)
         enemy.physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
-        enemy.physicsBody?.collisionBitMask =  CollisionType.ground.rawValue | CollisionType.horse.rawValue
+        enemy.physicsBody?.collisionBitMask =  CollisionType.ground.rawValue
+        enemy.physicsBody?.contactTestBitMask = CollisionType.horse.rawValue
         enemy.physicsBody?.allowsRotation = false
+        enemy.name = "enemy"
         enemy.size = CGSize(width: 25, height: 25)
         enemy.position.x = frame.maxX + 200
         enemy.zPosition = 1
         
         addChild(enemy)
+        enemyArray.append(enemy)
         
         configureMovement()
     }
@@ -103,22 +142,53 @@ class GameScene: SKScene {
     func configureMovement() {
         let path = UIBezierPath()
         path.move(to: .zero)
-            path.addLine(to: CGPoint(x: -10000, y: 0))
+        path.addLine(to: CGPoint(x: -(size.width + 200), y: 0))
         
-        let movement = SKAction.follow(path.cgPath, asOffset: true, orientToPath: true, speed: 200)
+        let speed = random(min: 125, max: 300)
+        print(speed)
+        let movement = SKAction.follow(path.cgPath, asOffset: true, orientToPath: true, speed: speed)
+        enemy.run(movement)
+    }
+    
+    func addPoint() {
         
-        let sequence = SKAction.sequence([movement, .removeFromParent()])
-        enemy.run(sequence)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let impulse = CGVector(dx: 0, dy: 10)
+        let impulse = CGVector(dx: 0, dy: 33)
         runHorse.physicsBody?.applyImpulse(impulse)
         runHorse.run(SKAction.repeat(SKAction.animate(with: jumpTextureArray, timePerFrame: 0.1), count: 1))
     }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        guard !gameOver else {
+            return
+        }
+        enumerateChildNodes(withName: "enemy") {
+            enemy, _ in
+            if enemy.position.x <=  -280  {
+                print(enemy.position.x)
+                enemy.removeFromParent()
+                self.score += 1
+                self.scoreLabel.text = "\(self.score)"
+            }
+        }
         moveGround()
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        switch(contactMask) {
+        case CollisionType.horse.rawValue | CollisionType.enemy.rawValue:
+            let secondNode = contact.bodyB.node
+            secondNode?.removeFromParent()
+            let firstNode = contact.bodyA.node
+            firstNode?.removeFromParent()
+            gameOver = true
+        default:
+            return
+        }
     }
 }

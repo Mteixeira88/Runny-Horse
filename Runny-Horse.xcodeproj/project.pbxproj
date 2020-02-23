@@ -16,6 +16,7 @@
 		278C6D0723FD7D0C00C92A21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D0523FD7D0C00C92A21 /* LaunchScreen.storyboard */; };
 		278C6D0F23FD811200C92A21 /* Jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D0E23FD811200C92A21 /* Jump.atlas */; };
 		278C6D1123FD86FF00C92A21 /* Run.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D1023FD86FF00C92A21 /* Run.atlas */; };
+		27D301052403257400C92D09 /* RHScoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D301042403257400C92D09 /* RHScoreLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		278C6D0823FD7D0C00C92A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		278C6D0E23FD811200C92A21 /* Jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Jump.atlas; sourceTree = SOURCE_ROOT; };
 		278C6D1023FD86FF00C92A21 /* Run.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Run.atlas; sourceTree = SOURCE_ROOT; };
+		27D301042403257400C92D09 /* RHScoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHScoreLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		278C6CF523FD7D0B00C92A21 /* Runny-Horse */ = {
 			isa = PBXGroup;
 			children = (
+				27D301032403255C00C92D09 /* Custom Views */,
 				278C6D1023FD86FF00C92A21 /* Run.atlas */,
 				278C6D0E23FD811200C92A21 /* Jump.atlas */,
 				278C6CF623FD7D0B00C92A21 /* AppDelegate.swift */,
@@ -74,6 +77,14 @@
 				278C6D0823FD7D0C00C92A21 /* Info.plist */,
 			);
 			path = "Runny-Horse";
+			sourceTree = "<group>";
+		};
+		27D301032403255C00C92D09 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				27D301042403257400C92D09 /* RHScoreLabel.swift */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +164,7 @@
 				278C6CFD23FD7D0B00C92A21 /* GameScene.swift in Sources */,
 				278C6CFF23FD7D0B00C92A21 /* GameViewController.swift in Sources */,
 				278C6CF723FD7D0B00C92A21 /* AppDelegate.swift in Sources */,
+				27D301052403257400C92D09 /* RHScoreLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
