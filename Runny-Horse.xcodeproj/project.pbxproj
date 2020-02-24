@@ -29,8 +29,8 @@
 		278C6D0323FD7D0C00C92A21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		278C6D0623FD7D0C00C92A21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		278C6D0823FD7D0C00C92A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		278C6D0E23FD811200C92A21 /* Jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Jump.atlas; sourceTree = SOURCE_ROOT; };
-		278C6D1023FD86FF00C92A21 /* Run.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Run.atlas; sourceTree = SOURCE_ROOT; };
+		278C6D0E23FD811200C92A21 /* Jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Jump.atlas; path = "Runny-Horse/Atlas/Jump.atlas"; sourceTree = SOURCE_ROOT; };
+		278C6D1023FD86FF00C92A21 /* Run.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Run.atlas; path = "Runny-Horse/Atlas/Run.atlas"; sourceTree = SOURCE_ROOT; };
 		27D301042403257400C92D09 /* RHScoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHScoreLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,15 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				27D301032403255C00C92D09 /* Custom Views */,
-				278C6D1023FD86FF00C92A21 /* Run.atlas */,
-				278C6D0E23FD811200C92A21 /* Jump.atlas */,
-				278C6CF623FD7D0B00C92A21 /* AppDelegate.swift */,
-				278C6CF823FD7D0B00C92A21 /* GameScene.sks */,
-				278C6CFC23FD7D0B00C92A21 /* GameScene.swift */,
-				278C6CFE23FD7D0B00C92A21 /* GameViewController.swift */,
+				27D30109240339DC00C92D09 /* Support */,
+				27D30108240339C100C92D09 /* Atlas */,
+				27D30107240339B000C92D09 /* View Controllers */,
+				27D30106240339A300C92D09 /* Scenes */,
 				278C6D0023FD7D0B00C92A21 /* Main.storyboard */,
-				278C6D0323FD7D0C00C92A21 /* Assets.xcassets */,
-				278C6D0523FD7D0C00C92A21 /* LaunchScreen.storyboard */,
 				278C6D0823FD7D0C00C92A21 /* Info.plist */,
 			);
 			path = "Runny-Horse";
@@ -85,6 +81,42 @@
 				27D301042403257400C92D09 /* RHScoreLabel.swift */,
 			);
 			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		27D30106240339A300C92D09 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				278C6CF823FD7D0B00C92A21 /* GameScene.sks */,
+				278C6CFC23FD7D0B00C92A21 /* GameScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		27D30107240339B000C92D09 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				278C6CFE23FD7D0B00C92A21 /* GameViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		27D30108240339C100C92D09 /* Atlas */ = {
+			isa = PBXGroup;
+			children = (
+				278C6D1023FD86FF00C92A21 /* Run.atlas */,
+				278C6D0E23FD811200C92A21 /* Jump.atlas */,
+			);
+			path = Atlas;
+			sourceTree = "<group>";
+		};
+		27D30109240339DC00C92D09 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				278C6CF623FD7D0B00C92A21 /* AppDelegate.swift */,
+				278C6D0323FD7D0C00C92A21 /* Assets.xcassets */,
+				278C6D0523FD7D0C00C92A21 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -93,7 +93,6 @@ class GameScene: SKScene {
         addChild(runHorse)
         
         let interval = random(min: 1.5, max: 3)
-        print(interval)
         
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy), SKAction.wait(forDuration: TimeInterval(interval))])))
         runHorse.run(SKAction.repeatForever(SKAction.animate(with: runTextureArray, timePerFrame: 0.1)))
@@ -144,8 +143,7 @@ class GameScene: SKScene {
         path.move(to: .zero)
         path.addLine(to: CGPoint(x: -(size.width + 200), y: 0))
         
-        let speed = random(min: 125, max: 300)
-        print(speed)
+        let speed = random(min: 200, max: 350)
         let movement = SKAction.follow(path.cgPath, asOffset: true, orientToPath: true, speed: speed)
         enemy.run(movement)
     }
@@ -167,7 +165,6 @@ class GameScene: SKScene {
         enumerateChildNodes(withName: "enemy") {
             enemy, _ in
             if enemy.position.x <=  -280  {
-                print(enemy.position.x)
                 enemy.removeFromParent()
                 self.score += 1
                 self.scoreLabel.text = "\(self.score)"
