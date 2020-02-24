@@ -179,11 +179,12 @@ extension GameScene: SKPhysicsContactDelegate {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         switch(contactMask) {
         case CollisionType.horse.rawValue | CollisionType.enemy.rawValue:
-            let secondNode = contact.bodyB.node
-            secondNode?.removeFromParent()
             let firstNode = contact.bodyA.node
             firstNode?.removeFromParent()
             gameOver = true
+            enumerateChildNodes(withName: "enemy") { enemy, _ in
+                enemy.removeFromParent()
+            }
         default:
             return
         }
