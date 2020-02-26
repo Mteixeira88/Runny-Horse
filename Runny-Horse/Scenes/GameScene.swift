@@ -17,6 +17,9 @@ class GameScene: SKScene {
     var gameOver = false
     
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
+        configureScene()
+        
         UIHelper.createBackground(in: self)
         configureElements()
         configureUI()
@@ -56,8 +59,6 @@ class GameScene: SKScene {
     }
     
     func configureElements() {
-        physicsWorld.contactDelegate = self
-        
         runHorse.position.x = frame.minX + 120
         addChild(runHorse)
         

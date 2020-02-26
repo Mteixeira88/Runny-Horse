@@ -21,11 +21,14 @@ class RHHorse: SKSpriteNode {
     }
     
     func configure() {
-        var runAtlas = SKTextureAtlas()
+        let jumpAtlas = SKTextureAtlas(named: "Jump")
+        for i in 1...jumpAtlas.textureNames.count {
+            let name = "jump_\(i).png"
+            jumpTextureArray.append(SKTexture(imageNamed: name))
+        }
+        
         var runTextureArray = [SKTexture]()
-        
-        runAtlas = SKTextureAtlas(named: "Run")
-        
+        let runAtlas = SKTextureAtlas(named: "Run")
         for i in 1...runAtlas.textureNames.count {
             let name = "run_\(i).png"
             runTextureArray.append(SKTexture(imageNamed: name))
@@ -41,12 +44,6 @@ class RHHorse: SKSpriteNode {
         
         run(SKAction.repeatForever(SKAction.animate(with: runTextureArray, timePerFrame: 0.1)))
         
-        var jumpAtlas = SKTextureAtlas()
-        jumpAtlas = SKTextureAtlas(named: "Jump")
-        for i in 1...jumpAtlas.textureNames.count {
-            let name = "jump_\(i).png"
-            jumpTextureArray.append(SKTexture(imageNamed: name))
-        }
     }
     
     func jump() {
