@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27499E712406C72700D6637E /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27499E702406C72700D6637E /* UIHelper.swift */; };
+		27499E732406C83900D6637E /* RHHorse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27499E722406C83900D6637E /* RHHorse.swift */; };
+		27499E762406CAFC00D6637E /* SKScene+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27499E752406CAFC00D6637E /* SKScene+Ext.swift */; };
+		27499E782406CDC600D6637E /* CollisionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27499E772406CDC600D6637E /* CollisionType.swift */; };
 		278C6CF723FD7D0B00C92A21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C6CF623FD7D0B00C92A21 /* AppDelegate.swift */; };
 		278C6CF923FD7D0B00C92A21 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 278C6CF823FD7D0B00C92A21 /* GameScene.sks */; };
 		278C6CFD23FD7D0B00C92A21 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C6CFC23FD7D0B00C92A21 /* GameScene.swift */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27499E702406C72700D6637E /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		27499E722406C83900D6637E /* RHHorse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHHorse.swift; sourceTree = "<group>"; };
+		27499E752406CAFC00D6637E /* SKScene+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKScene+Ext.swift"; sourceTree = "<group>"; };
+		27499E772406CDC600D6637E /* CollisionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionType.swift; sourceTree = "<group>"; };
 		278C6CF323FD7D0B00C92A21 /* Runny-Horse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Runny-Horse.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		278C6CF623FD7D0B00C92A21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		278C6CF823FD7D0B00C92A21 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -45,6 +53,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27499E6F2406C71900D6637E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				27499E702406C72700D6637E /* UIHelper.swift */,
+				27499E772406CDC600D6637E /* CollisionType.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		27499E742406CAE500D6637E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				27499E752406CAFC00D6637E /* SKScene+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		278C6CEA23FD7D0B00C92A21 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +89,8 @@
 		278C6CF523FD7D0B00C92A21 /* Runny-Horse */ = {
 			isa = PBXGroup;
 			children = (
+				27499E742406CAE500D6637E /* Extension */,
+				27499E6F2406C71900D6637E /* Helpers */,
 				27D301032403255C00C92D09 /* Custom Views */,
 				27D30109240339DC00C92D09 /* Support */,
 				27D30108240339C100C92D09 /* Atlas */,
@@ -79,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				27D301042403257400C92D09 /* RHScoreLabel.swift */,
+				27499E722406C83900D6637E /* RHHorse.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -196,6 +224,10 @@
 				278C6CFD23FD7D0B00C92A21 /* GameScene.swift in Sources */,
 				278C6CFF23FD7D0B00C92A21 /* GameViewController.swift in Sources */,
 				278C6CF723FD7D0B00C92A21 /* AppDelegate.swift in Sources */,
+				27499E762406CAFC00D6637E /* SKScene+Ext.swift in Sources */,
+				27499E782406CDC600D6637E /* CollisionType.swift in Sources */,
+				27499E732406C83900D6637E /* RHHorse.swift in Sources */,
+				27499E712406C72700D6637E /* UIHelper.swift in Sources */,
 				27D301052403257400C92D09 /* RHScoreLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

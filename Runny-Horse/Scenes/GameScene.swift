@@ -7,39 +7,43 @@
 //
 
 import SpriteKit
-import GameplayKit
-
-enum CollisionType: UInt32 {
-    case horse = 1
-    case enemy = 2
-    case ground = 4
-}
 
 class GameScene: SKScene {
-    var runHorse = SKSpriteNode(imageNamed: "textureHorse")
+    var runHorse = RHHorse()
     var enemy = SKSpriteNode()
-    var enemyArray = [SKSpriteNode]()
     var jumpTextureArray = [SKTexture]()
     let scoreLabel = RHScoreLabel(textAlignment: .right, fontSize: 30)
     var score = 0
     var gameOver = false
     
     override func didMove(to view: SKView) {
-        physicsWorld.contactDelegate = self
-        physicsWorld.gravity = CGVector(dx:0, dy: -3)
-        let collisionFrame = CGRect(x: -1000, y: frame.minY + 30, width: size.width + 1000, height: size.height - 20)
-        physicsBody = SKPhysicsBody(edgeLoopFrom: collisionFrame)
-        physicsBody?.categoryBitMask = CollisionType.ground.rawValue
-        createBackground()
-        createHorse()
-        createEnemy()
+        UIHelper.createBackground(in: self)
+        configureElements()
         configureUI()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        runHorse.jump()
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        guard !gameOver else {
+            return
+        }
+        enumerateChildNodes(withName: "enemy") { [weak self] enemy, _ in
+            guard let self = self else { return }
+            
+            self.jumpOver(enemy: enemy)
+        }
+        
+        moveGround(withImage: "Background")
     }
     
     func configureUI() {
         guard let view = view else {
             return
         }
+        
         scoreLabel.text = "\(score)"
         view.addSubview(scoreLabel)
         
@@ -51,69 +55,14 @@ class GameScene: SKScene {
         ])
     }
     
-    func createBackground() {
-        for i in 0...3 {
-            let background = SKSpriteNode(imageNamed: "background")
-            background.name = "Background"
-            background.size = CGSize(width: frame.width, height: frame.height)
-            background.zPosition = -1
-            background.position = CGPoint(x: CGFloat(i) * background.size.width, y: 0)
-            addChild(background)
-        }
-    }
-    
-    func createHorse() {
-        var runAtlas = SKTextureAtlas()
-        var runTextureArray = [SKTexture]()
+    func configureElements() {
+        physicsWorld.contactDelegate = self
         
-        var jumpAtlas = SKTextureAtlas()
-        
-        runAtlas = SKTextureAtlas(named: "Run")
-        jumpAtlas = SKTextureAtlas(named: "Jump")
-        
-        for i in 1...jumpAtlas.textureNames.count {
-            let name = "jump_\(i).png"
-            jumpTextureArray.append(SKTexture(imageNamed: name))
-        }
-        
-        for i in 1...runAtlas.textureNames.count {
-            let name = "run_\(i).png"
-            runTextureArray.append(SKTexture(imageNamed: name))
-        }
-        
-        runHorse.size = CGSize(width: 100, height: 100)
         runHorse.position.x = frame.minX + 120
-        runHorse.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 60, height: 60))
-        runHorse.physicsBody?.categoryBitMask = CollisionType.horse.rawValue
-        runHorse.physicsBody?.collisionBitMask = CollisionType.ground.rawValue | CollisionType.enemy.rawValue
-        runHorse.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue
-        runHorse.physicsBody?.allowsRotation = false
-        runHorse.zPosition = 1
-        
         addChild(runHorse)
         
-        let interval = random(min: 1.5, max: 3)
-        
+        let interval = UIHelper.random(min: 1.5, max: 3)
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy), SKAction.wait(forDuration: TimeInterval(interval))])))
-        runHorse.run(SKAction.repeatForever(SKAction.animate(with: runTextureArray, timePerFrame: 0.1)))
-    }
-    
-    func random() -> CGFloat {
-        return CGFloat(arc4random() / 0xFFFFFFFF)
-    }
-    
-    func random(min: CGFloat, max: CGFloat) -> CGFloat {
-        return random() * (max - min) + min
-    }
-    
-    func moveGround() {
-        enumerateChildNodes(withName: "Background") { (node, error) in
-            node.position.x -= 2
-            
-            if node.position.x <= -(self.scene?.size.width)! {
-                node.position.x += (self.scene?.size.width)! * 3
-            }
-        }
     }
     
     func createEnemy() {
@@ -133,44 +82,16 @@ class GameScene: SKScene {
         enemy.zPosition = 1
         
         addChild(enemy)
-        enemyArray.append(enemy)
         
-        configureMovement()
+        enemy.run(UIHelper.configureMovement(starting: -(size.width + 200)))
     }
     
-    func configureMovement() {
-        let path = UIBezierPath()
-        path.move(to: .zero)
-        path.addLine(to: CGPoint(x: -(size.width + 200), y: 0))
-        
-        let speed = random(min: 200, max: 350)
-        let movement = SKAction.follow(path.cgPath, asOffset: true, orientToPath: true, speed: speed)
-        enemy.run(movement)
-    }
-    
-    func addPoint() {
-        
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let impulse = CGVector(dx: 0, dy: 33)
-        runHorse.physicsBody?.applyImpulse(impulse)
-        runHorse.run(SKAction.repeat(SKAction.animate(with: jumpTextureArray, timePerFrame: 0.1), count: 1))
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        guard !gameOver else {
-            return
+    func jumpOver(enemy: SKNode) {
+        if enemy.position.x <= runHorse.frame.minX  {
+            enemy.removeFromParent()
+            score += 1
+            scoreLabel.text = "\(score)"
         }
-        enumerateChildNodes(withName: "enemy") {
-            enemy, _ in
-            if enemy.position.x <=  -280  {
-                enemy.removeFromParent()
-                self.score += 1
-                self.scoreLabel.text = "\(self.score)"
-            }
-        }
-        moveGround()
     }
 }
 
