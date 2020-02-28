@@ -11,7 +11,6 @@ import SpriteKit
 class GameScene: SKScene {
     var runHorse = RHHorse()
     var enemy = SKSpriteNode()
-    var jumpTextureArray = [SKTexture]()
     let scoreLabel = RHScoreLabel(textAlignment: .right, fontSize: 30)
     var score = 0
     var gameOver = false
