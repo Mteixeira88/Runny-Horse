@@ -25,7 +25,9 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        runHorse.jump()
+        if runHorse.position.y < 90 {
+            runHorse.jump()
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -38,7 +40,7 @@ class GameScene: SKScene {
             self.jumpOver(enemy: enemy)
         }
         
-        moveGround(withImage: "Background")
+        moveGround(withImage: "Foreground")
     }
     
     func configureUI() {
@@ -71,11 +73,11 @@ class GameScene: SKScene {
         }
         
         enemy = SKSpriteNode(imageNamed: "box")
-        enemy.physicsBody = SKPhysicsBody(circleOfRadius: 12)
+        enemy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 25, height: 25))
         enemy.physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
         enemy.physicsBody?.collisionBitMask =  CollisionType.ground.rawValue
         enemy.physicsBody?.contactTestBitMask = CollisionType.horse.rawValue
-        enemy.physicsBody?.allowsRotation = false
+//        enemy.physicsBody?.allowsRotation = false
         enemy.name = "enemy"
         enemy.size = CGSize(width: 25, height: 25)
         enemy.position.x = frame.maxX + 200

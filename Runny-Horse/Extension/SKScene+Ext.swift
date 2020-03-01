@@ -11,7 +11,7 @@ import SpriteKit
 extension SKScene {
     func moveGround(withImage background: String) {
         enumerateChildNodes(withName: background) { (node, error) in
-            node.position.x -= 2
+            node.position.x -= 1.5
             
             if node.position.x <= -(self.scene?.size.width)! {
                 node.position.x += (self.scene?.size.width)! * 3

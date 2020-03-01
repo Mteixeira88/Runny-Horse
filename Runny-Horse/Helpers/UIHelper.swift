@@ -11,13 +11,19 @@ import SpriteKit
 
 enum UIHelper {
     static func createBackground(in scene: SKScene) {
+        let background = SKSpriteNode(imageNamed: "background")
+        background.name = "Background"
+        background.size = CGSize(width: scene.frame.width, height: scene.frame.height)
+        background.zPosition = -2
+        scene.addChild(background)
+        
         for i in 0...3 {
-            let background = SKSpriteNode(imageNamed: "background")
-            background.name = "Background"
-            background.size = CGSize(width: scene.frame.width, height: scene.frame.height)
-            background.zPosition = -1
-            background.position = CGPoint(x: CGFloat(i) * background.size.width, y: 0)
-            scene.addChild(background)
+            let foreground = SKSpriteNode(imageNamed: "foreground")
+            foreground.name = "Foreground"
+            foreground.size = CGSize(width: scene.frame.width, height: scene.frame.height)
+            foreground.zPosition = -1
+            foreground.position = CGPoint(x: CGFloat(i) * background.size.width, y: -20)
+            scene.addChild(foreground)
         }
     }
     
