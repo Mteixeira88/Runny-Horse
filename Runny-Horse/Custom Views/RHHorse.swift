@@ -42,14 +42,13 @@ class RHHorse: SKSpriteNode {
         physicsBody?.allowsRotation = false
         zPosition = 1
         
-        run(SKAction.repeatForever(SKAction.animate(with: runTextureArray, timePerFrame: 0.05)))
+        run(SKAction.repeatForever(SKAction.animate(with: runTextureArray, timePerFrame: 0.06)))
         
     }
     
     func jump() {
-        print(position.y)
         let impulse = CGVector(dx: 0, dy: 20)
         physicsBody?.applyImpulse(impulse)
-        run(SKAction.repeat(SKAction.animate(with: jumpTextureArray, timePerFrame: 0.1), count: 1))
+        run(SKAction.repeat(SKAction.animate(with: jumpTextureArray, timePerFrame: 0.07), count: 1))
     }
 }

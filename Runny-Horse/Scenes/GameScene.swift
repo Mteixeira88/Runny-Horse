@@ -8,12 +8,18 @@
 
 import SpriteKit
 
+protocol GameSceneDelegate: class {
+    func showAlert(scene: SKScene)
+}
+
 class GameScene: SKScene {
     var runHorse = RHHorse()
     var enemy = SKSpriteNode()
-    let scoreLabel = RHScoreLabel(textAlignment: .right, fontSize: 30)
+    let scoreLabel = RHTitleLabel(textAlignment: .right, fontSize: 30)
     var score = 0
     var gameOver = false
+    
+    weak var gameDelegate: GameSceneDelegate!
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -63,7 +69,7 @@ class GameScene: SKScene {
         runHorse.position.x = frame.minX + 120
         addChild(runHorse)
         
-        let interval = UIHelper.random(min: 1.5, max: 3)
+        let interval = UIHelper.random(min: 1, max: 3)
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy), SKAction.wait(forDuration: TimeInterval(interval))])))
     }
     
@@ -77,7 +83,7 @@ class GameScene: SKScene {
         enemy.physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
         enemy.physicsBody?.collisionBitMask =  CollisionType.ground.rawValue
         enemy.physicsBody?.contactTestBitMask = CollisionType.horse.rawValue
-//        enemy.physicsBody?.allowsRotation = false
+        enemy.physicsBody?.allowsRotation = false
         enemy.name = "enemy"
         enemy.size = CGSize(width: 25, height: 25)
         enemy.position.x = frame.maxX + 200
@@ -104,10 +110,13 @@ extension GameScene: SKPhysicsContactDelegate {
         case CollisionType.horse.rawValue | CollisionType.enemy.rawValue:
             let firstNode = contact.bodyA.node
             firstNode?.removeFromParent()
+            scoreLabel.removeFromSuperview()
             gameOver = true
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showAlertVC"), object: nil, userInfo: ["score": score])
             enumerateChildNodes(withName: "enemy") { enemy, _ in
                 enemy.removeFromParent()
             }
+            
         default:
             return
         }

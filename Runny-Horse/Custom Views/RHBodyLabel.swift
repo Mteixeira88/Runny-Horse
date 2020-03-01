@@ -1,15 +1,15 @@
 //
-//  ScoreLabel.swift
+//  RHBodyLabel.swift
 //  Runny-Horse
 //
-//  Created by Miguel Teixeira on 23/02/2020.
+//  Created by Miguel Teixeira on 01/03/2020.
 //  Copyright © 2020 Miguel Teixeira. All rights reserved.
 //
 
 import UIKit
 
-class RHScoreLabel: UILabel {
-
+class RHBodyLabel: UILabel {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -21,19 +21,21 @@ class RHScoreLabel: UILabel {
     }
     
     
-    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+    convenience init(textAlignment: NSTextAlignment) {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
-        self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
     }
     
     
     private func configure() {
-        textColor = .systemBackground
+        textColor = .secondaryLabel
+        font = UIFont.preferredFont(forTextStyle: .body)
+        adjustsFontForContentSizeCategory = true
         adjustsFontSizeToFitWidth = true
-        minimumScaleFactor = 0.9
-        lineBreakMode = .byTruncatingTail
+        minimumScaleFactor = 0.75
+        lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
     }
-
+    
 }
+

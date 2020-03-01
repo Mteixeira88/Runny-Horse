@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2739664F240C079B00786279 /* RHAlertContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2739664E240C079B00786279 /* RHAlertContainer.swift */; };
+		27396651240C083400786279 /* RHBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27396650240C083400786279 /* RHBodyLabel.swift */; };
+		27396653240C087300786279 /* RHButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27396652240C087300786279 /* RHButton.swift */; };
+		27396655240C08B300786279 /* RHAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27396654240C08B300786279 /* RHAlertViewController.swift */; };
+		27396657240C093100786279 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27396656240C093100786279 /* UIView+Ext.swift */; };
+		27396659240C0AAC00786279 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27396658240C0AAC00786279 /* UIViewController+Ext.swift */; };
+		2739665B240C124A00786279 /* RHTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2739665A240C124A00786279 /* RHTitleLabel.swift */; };
 		27499E712406C72700D6637E /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27499E702406C72700D6637E /* UIHelper.swift */; };
 		27499E732406C83900D6637E /* RHHorse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27499E722406C83900D6637E /* RHHorse.swift */; };
 		27499E762406CAFC00D6637E /* SKScene+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27499E752406CAFC00D6637E /* SKScene+Ext.swift */; };
@@ -20,10 +27,16 @@
 		278C6D0723FD7D0C00C92A21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D0523FD7D0C00C92A21 /* LaunchScreen.storyboard */; };
 		278C6D0F23FD811200C92A21 /* Jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D0E23FD811200C92A21 /* Jump.atlas */; };
 		278C6D1123FD86FF00C92A21 /* Run.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 278C6D1023FD86FF00C92A21 /* Run.atlas */; };
-		27D301052403257400C92D09 /* RHScoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D301042403257400C92D09 /* RHScoreLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2739664E240C079B00786279 /* RHAlertContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHAlertContainer.swift; sourceTree = "<group>"; };
+		27396650240C083400786279 /* RHBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHBodyLabel.swift; sourceTree = "<group>"; };
+		27396652240C087300786279 /* RHButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHButton.swift; sourceTree = "<group>"; };
+		27396654240C08B300786279 /* RHAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHAlertViewController.swift; sourceTree = "<group>"; };
+		27396656240C093100786279 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		27396658240C0AAC00786279 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		2739665A240C124A00786279 /* RHTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHTitleLabel.swift; sourceTree = "<group>"; };
 		27499E702406C72700D6637E /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		27499E722406C83900D6637E /* RHHorse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHHorse.swift; sourceTree = "<group>"; };
 		27499E752406CAFC00D6637E /* SKScene+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKScene+Ext.swift"; sourceTree = "<group>"; };
@@ -39,7 +52,6 @@
 		278C6D0823FD7D0C00C92A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		278C6D0E23FD811200C92A21 /* Jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Jump.atlas; path = "Runny-Horse/Atlas/Jump.atlas"; sourceTree = SOURCE_ROOT; };
 		278C6D1023FD86FF00C92A21 /* Run.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Run.atlas; path = "Runny-Horse/Atlas/Run.atlas"; sourceTree = SOURCE_ROOT; };
-		27D301042403257400C92D09 /* RHScoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHScoreLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				27499E752406CAFC00D6637E /* SKScene+Ext.swift */,
+				27396656240C093100786279 /* UIView+Ext.swift */,
+				27396658240C0AAC00786279 /* UIViewController+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -105,8 +119,11 @@
 		27D301032403255C00C92D09 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				27D301042403257400C92D09 /* RHScoreLabel.swift */,
 				27499E722406C83900D6637E /* RHHorse.swift */,
+				2739664E240C079B00786279 /* RHAlertContainer.swift */,
+				27396650240C083400786279 /* RHBodyLabel.swift */,
+				27396652240C087300786279 /* RHButton.swift */,
+				2739665A240C124A00786279 /* RHTitleLabel.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -124,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				278C6CFE23FD7D0B00C92A21 /* GameViewController.swift */,
+				27396654240C08B300786279 /* RHAlertViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -221,14 +239,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2739665B240C124A00786279 /* RHTitleLabel.swift in Sources */,
+				27396651240C083400786279 /* RHBodyLabel.swift in Sources */,
+				2739664F240C079B00786279 /* RHAlertContainer.swift in Sources */,
+				27396659240C0AAC00786279 /* UIViewController+Ext.swift in Sources */,
 				278C6CFD23FD7D0B00C92A21 /* GameScene.swift in Sources */,
+				27396655240C08B300786279 /* RHAlertViewController.swift in Sources */,
 				278C6CFF23FD7D0B00C92A21 /* GameViewController.swift in Sources */,
 				278C6CF723FD7D0B00C92A21 /* AppDelegate.swift in Sources */,
 				27499E762406CAFC00D6637E /* SKScene+Ext.swift in Sources */,
+				27396653240C087300786279 /* RHButton.swift in Sources */,
 				27499E782406CDC600D6637E /* CollisionType.swift in Sources */,
+				27396657240C093100786279 /* UIView+Ext.swift in Sources */,
 				27499E732406C83900D6637E /* RHHorse.swift in Sources */,
 				27499E712406C72700D6637E /* UIHelper.swift in Sources */,
-				27D301052403257400C92D09 /* RHScoreLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
