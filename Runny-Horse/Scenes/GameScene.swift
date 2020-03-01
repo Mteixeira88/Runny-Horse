@@ -31,7 +31,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if runHorse.position.y < 90 {
+        if runHorse.position.y < -90 {
             runHorse.jump()
         }
     }
@@ -79,13 +79,13 @@ class GameScene: SKScene {
         }
         
         enemy = SKSpriteNode(imageNamed: "box")
-        enemy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 25, height: 25))
+        enemy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 27, height: 10))
         enemy.physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
         enemy.physicsBody?.collisionBitMask =  CollisionType.ground.rawValue
         enemy.physicsBody?.contactTestBitMask = CollisionType.horse.rawValue
         enemy.physicsBody?.allowsRotation = false
         enemy.name = "enemy"
-        enemy.size = CGSize(width: 25, height: 25)
+        enemy.size = CGSize(width: 27, height: 10)
         enemy.position.x = frame.maxX + 200
         enemy.zPosition = 1
         
