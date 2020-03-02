@@ -22,3 +22,15 @@ The goal is simple, jump the most barriers you can by tapping your phone screen.
 
 <img alt="" src="/Screenshots/2-iphone_x_screen.png">
 
+Contributing
+Fork this project: https://github.com/Mteixeira88/Runny-Horse
+Create your feature branch: git checkout -b my-new-feature
+Commit your changes: git commit -am 'Add some feature'
+Push to the branch: git push origin my-new-feature
+Submit a pull request
+Author
+Miguel Teixeira
+
+https://github.com/Mteixeira88
+License
+This is free and unencumbered software released into the public domain. For more information, please refer to http://unlicense.org.
