@@ -32,7 +32,6 @@ class GameViewController: UIViewController {
                 
                 // Present the scene
                 view.presentScene(scene)
-                //                scene.game = self
             }
         }
     }
@@ -41,12 +40,14 @@ class GameViewController: UIViewController {
         guard let score = notification.userInfo!["score"] as! Int? else { return }
         let highScore = UserDefaults.standard.integer(forKey: "highScore")
         
-        if highScore > score {
-            presentRHAlertOnMainThread(title: "Your Score was \(score)", message: "Sorry, It wasn't your biggest score. Keep trying to beat \(highScore) jumps", buttonTitle: "Restar game")
-            return
+        if score == 0 {
+            presentRHAlertOnMainThread(title: "Your Score was \(score)", message: "Try harder! At least jump one time!", buttonTitle: "Restart game")
+        } else if highScore > score {
+            presentRHAlertOnMainThread(title: "Your Score was \(score)", message: "Sorry, It wasn't your biggest score. Keep trying to beat \(highScore) jumps", buttonTitle: "Restart game")
+        } else {
+            UserDefaults.standard.set(score, forKey: "highScore")
+            presentRHAlertOnMainThread(title: "Your Score was \(score)", message: "CONGRATS! THIS IS YOUR HIHEST SCORE!", buttonTitle: "Restart game")
         }
-        UserDefaults.standard.set(score, forKey: "highScore")
-        presentRHAlertOnMainThread(title: "Your Score was \(score)", message: "CONGRATS! THIS IS YOUR HIHEST SCORE!", buttonTitle: "Restar game")
     }
     
     @objc func restartGame() {

@@ -22,6 +22,7 @@ class GameScene: SKScene {
     weak var gameDelegate: GameSceneDelegate!
     
     override func didMove(to view: SKView) {
+        removeAllChildren()
         physicsWorld.contactDelegate = self
         configureScene()
         
@@ -31,9 +32,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if runHorse.position.y < -90 {
-            runHorse.jump()
-        }
+        runHorse.jump()
     }
     
     override func update(_ currentTime: TimeInterval) {

@@ -20,7 +20,7 @@ extension SKScene {
     }
     
     func configureScene() {
-        physicsWorld.gravity = CGVector(dx:0, dy: -3)
+        physicsWorld.gravity = CGVector(dx:0, dy: -3.3)
         
         let collisionFrame = CGRect(x: -1000, y: frame.minY + 30, width: size.width + 1000, height: size.height - 20)
         physicsBody = SKPhysicsBody(edgeLoopFrom: collisionFrame)
