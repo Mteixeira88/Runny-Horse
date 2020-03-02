@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2719080B240D4B08008420D5 /* loopSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2719080A240D4B08008420D5 /* loopSong.mp3 */; };
 		2739664F240C079B00786279 /* RHAlertContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2739664E240C079B00786279 /* RHAlertContainer.swift */; };
 		27396651240C083400786279 /* RHBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27396650240C083400786279 /* RHBodyLabel.swift */; };
 		27396653240C087300786279 /* RHButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27396652240C087300786279 /* RHButton.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2719080A240D4B08008420D5 /* loopSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loopSong.mp3; sourceTree = "<group>"; };
 		2739664E240C079B00786279 /* RHAlertContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHAlertContainer.swift; sourceTree = "<group>"; };
 		27396650240C083400786279 /* RHBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHBodyLabel.swift; sourceTree = "<group>"; };
 		27396652240C087300786279 /* RHButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHButton.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		27D30109240339DC00C92D09 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				2719080A240D4B08008420D5 /* loopSong.mp3 */,
 				278C6CF623FD7D0B00C92A21 /* AppDelegate.swift */,
 				278C6D0323FD7D0C00C92A21 /* Assets.xcassets */,
 				278C6D0523FD7D0C00C92A21 /* LaunchScreen.storyboard */,
@@ -226,6 +229,7 @@
 				278C6D0223FD7D0B00C92A21 /* Main.storyboard in Resources */,
 				278C6D1123FD86FF00C92A21 /* Run.atlas in Resources */,
 				278C6CF923FD7D0B00C92A21 /* GameScene.sks in Resources */,
+				2719080B240D4B08008420D5 /* loopSong.mp3 in Resources */,
 				278C6D0423FD7D0C00C92A21 /* Assets.xcassets in Resources */,
 				278C6D0F23FD811200C92A21 /* Jump.atlas in Resources */,
 				278C6D0723FD7D0C00C92A21 /* LaunchScreen.storyboard in Resources */,
@@ -396,15 +400,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = U5QL3W6RAW;
 				INFOPLIST_FILE = "Runny-Horse/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.mteixeira88.Runny-Horse";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.miguelteixeira.Clip-To-Cloud-iOS.Clipped";
+				PRODUCT_NAME = "Runny-Horse";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -414,15 +422,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = U5QL3W6RAW;
 				INFOPLIST_FILE = "Runny-Horse/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.mteixeira88.Runny-Horse";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.miguelteixeira.Clip-To-Cloud-iOS.Clipped";
+				PRODUCT_NAME = "Runny-Horse";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

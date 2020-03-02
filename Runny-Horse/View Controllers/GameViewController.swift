@@ -46,7 +46,7 @@ class GameViewController: UIViewController {
             presentRHAlertOnMainThread(title: "Your Score was \(score)", message: "Sorry, It wasn't your biggest score. Keep trying to beat \(highScore) jumps", buttonTitle: "Restart game")
         } else {
             UserDefaults.standard.set(score, forKey: "highScore")
-            presentRHAlertOnMainThread(title: "Your Score was \(score)", message: "CONGRATS! THIS IS YOUR HIHEST SCORE!", buttonTitle: "Restart game")
+            presentRHAlertOnMainThread(title: "Your Score was \(score)", message: "CONGRATS! THIS IS YOUR HIGHEST SCORE!", buttonTitle: "Restart game")
         }
     }
     

@@ -29,6 +29,7 @@ class GameScene: SKScene {
         UIHelper.createBackground(in: self)
         configureElements()
         configureUI()
+        addChild(SKAudioNode(fileNamed: "loopSong.mp3"))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
