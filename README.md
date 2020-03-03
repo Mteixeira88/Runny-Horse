@@ -1,6 +1,8 @@
 # Runny-Horse
 
-<img alt="" src="https://img.shields.io/badge/IOS-%5E13-red"> <img alt="" src="https://img.shields.io/badge/AppStore-1.0-yellow">
+<img alt="" src="https://img.shields.io/badge/IOS-%5E13-red"> <img alt="" src="https://img.shields.io/badge/AppStore-1.0-green">
+
+<a href="https://apps.apple.com/us/app/runny-horse/id1501170414"><img alt="" src="/appStoreButton_2.png"></a>
 
 Like simple games? Try Runny-Horse and get fun instantly while surpassing yourself every time you restart the game.
 
